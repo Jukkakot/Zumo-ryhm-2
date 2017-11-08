@@ -87,6 +87,9 @@ int main()
   //motor_backward(50,2000);        //moving backward
        
     motor_stop();                   // motor stop
+    
+    // test comment
+    
     return 0;
  }
 void check_battery () {
