@@ -53,7 +53,8 @@ void check_battery ();
 
 
 //battery level//
-int main()
+
+/*int main()
 {
     CyGlobalIntEnable; 
     UART_1_Start();
@@ -91,7 +92,7 @@ int main()
     // test comment
     
     return 0;
- }
+ }*/
 void check_battery () {
     int16 adcresult =0;
     float volts = 0.0;
@@ -248,7 +249,7 @@ int main()
 //*/
 
 
-/*//reflectance//
+//reflectance//
 int main()
 {
     struct sensors_ ref;
@@ -261,14 +262,58 @@ int main()
     reflectance_start();
 
     IR_led_Write(1);
-    for(;;)
+    reflectance_set_threshold(14700,14750,14600,15950);
+    CyDelay(10);
+    // while (SW1_Read() == 1);
+    //printf("Startting program\n");
+    BatteryLed_Write(1); // Switch led on
+    //check_battery();
+    //CyDelay(2000);
+        
+    motor_start();
+    int left = 1;
+    int left3 = 1;
+    int right = 1;
+    int right3 = 1;
+    while(1)
     {
+        
         reflectance_read(&ref);
         printf("%d %d %d %d \r\n", ref.l3, ref.l1, ref.r1, ref.r3);       //print out each period of reflectance sensors
         reflectance_digital(&dig);      //print out 0 or 1 according to results of reflectance period
         printf("%d %d %d %d \r\n", dig.l3, dig.l1, dig.r1, dig.r3);        //print out 0 or 1 according to results of reflectance period
+       // CyDelay(100);
         
-        CyDelay(500);
+        if( dig.l1 == 0 && dig.r1 == 0 && dig.l3 == 1 && dig.r3 == 1){
+            motor_forward(250,30);
+        }
+        else if (dig.l1 == 1 && dig.r1 == 0) {
+            motor_turn(250,10,10);            
+        }
+        else if (dig.l1 == 0 && dig.r1 == 1) {
+            motor_turn(10,250,10);   
+        }else if (dig.l3  == 0 || dig.r3 == 0) {
+            if(dig.l3 == 0) {
+                motor_turn(10,250,20);
+            } if (dig.r3 == 0) {
+                motor_turn(250,10,20);   
+            }
+        }else {
+            if(left == 0){
+                motor_turn(20,250,20);   
+            } else if (right == 0) {
+                motor_turn(250,20,20);   
+            }
+        }
+        if(!(dig.l1 ==  1 && dig.r1 == 1 && dig.r3 == 1 && dig.l3 == 1)){
+            left = dig.l1;
+            right = dig.r1;
+            right3 = dig.r3;
+            left3 = dig.l3;
+        }
+        
+        
+        
     }
 }   
 //*/
