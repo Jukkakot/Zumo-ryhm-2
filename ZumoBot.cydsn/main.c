@@ -45,6 +45,14 @@
 int rread(void);
 void blinking_led ();
 void check_battery ();
+void move();
+int threshold_calculator (int black, int white);
+    int left = 1;
+    int left3 = 1;
+    int right = 1;
+    int right3 = 1;
+
+    int blackLines=0;
 /**
  * @file    main.c
  * @brief   
@@ -252,8 +260,7 @@ int main()
 //reflectance//
 int main()
 {
-    struct sensors_ ref;
-    struct sensors_ dig;
+    ADC_Battery_Start();
     CyGlobalIntEnable; 
     UART_1_Start();
   
@@ -262,47 +269,97 @@ int main()
     reflectance_start();
 
     IR_led_Write(1);
-    reflectance_set_threshold(14700,14750,14600,15950);
+    
     CyDelay(10);
-    // while (SW1_Read() == 1);
-    //printf("Startting program\n");
+   
     BatteryLed_Write(1); // Switch led on
-    //check_battery();
-    //CyDelay(2000);
-        
+    check_battery();
+    
+    while (SW1_Read() == 1); // Calibrate
+    CyDelay(500);
+    struct sensors_ ref;
+
+    
+    reflectance_read(&ref);
+    
+    int blackl3 = ref.l3;
+    int blackl1 = ref.l1;
+    int blackr1 = ref.r1;
+    int blackr3 = ref.r3;
     motor_start();
-    int left = 1;
-    int left3 = 1;
-    int right = 1;
-    int right3 = 1;
-    while(1)
+    motor_forward(100,500);
+    motor_stop();
+    reflectance_read(&ref);
+    int whitel3 = ref.l3;
+    int whitel1 = ref.l1;
+    int whiter1 = ref.r1;
+    int whiter3 = ref.r3;
+    
+    
+    reflectance_set_threshold(threshold_calculator(blackl3,whitel3),
+                              threshold_calculator(blackl1,whitel1),
+                              threshold_calculator(blackr1,whiter1),
+                              threshold_calculator(blackr3,whiter3));
+    while (SW1_Read() == 1); //Start to move
+    CyDelay(1000);
+    
+    long timer=0;
+    motor_start();
+    while(blackLines < 3)
     {
-        
-        reflectance_read(&ref);
-        printf("%d %d %d %d \r\n", ref.l3, ref.l1, ref.r1, ref.r3);       //print out each period of reflectance sensors
+        move();
+        //CyDelay(10);
+        timer += 1;
+    }
+    
+    motor_stop();
+    while(1){
+    printf("%ld\n",timer);
+    CyDelay(1000);
+    }
+    return 0;
+    
+}
+int threshold_calculator (int black, int white) {
+ return white + ((black - white)/2);   
+}
+void move () {
+    struct sensors_ ref;
+    struct sensors_ dig;
+    
+    reflectance_read(&ref);
+        //printf("%d %d %d %d \r\n", ref.l3, ref.l1, ref.r1, ref.r3);       //print out each period of reflectance sensors
         reflectance_digital(&dig);      //print out 0 or 1 according to results of reflectance period
-        printf("%d %d %d %d \r\n", dig.l3, dig.l1, dig.r1, dig.r3);        //print out 0 or 1 according to results of reflectance period
+       // printf("%d %d %d %d \r\n", dig.l3, dig.l1, dig.r1, dig.r3);        //print out 0 or 1 according to results of reflectance period
        // CyDelay(100);
+        if (!(left == 0 && left3 == 0 && right == 0 && right3 == 0) && (dig.l1 ==  0 && dig.r1 == 0 && dig.r3 == 0 && dig.l3 == 0) ){
+            blackLines +=1;
+        }
         
-        if( dig.l1 == 0 && dig.r1 == 0 && dig.l3 == 1 && dig.r3 == 1){
-            motor_forward(250,30);
+        
+        
+        
+        if( (dig.l1 == 0 && dig.r1 == 0 && dig.l3 == 1 && dig.r3 == 1) || (dig.l1 == 0 && dig.r1 == 0 && dig.l3 == 0 && dig.r3 == 0)){
+            motor_forward(255,1);
         }
         else if (dig.l1 == 1 && dig.r1 == 0) {
-            motor_turn(250,10,10);            
+            motor_turn(255,170,1);            
         }
         else if (dig.l1 == 0 && dig.r1 == 1) {
-            motor_turn(10,250,10);   
-        }else if (dig.l3  == 0 || dig.r3 == 0) {
+            motor_turn(170,255,1);   
+        }else if ((dig.l3  == 0 || dig.r3 == 0) && (dig.l1 == 1 && dig.r1 == 1)) {
             if(dig.l3 == 0) {
-                motor_turn(10,250,20);
+             //   motor_turn(5,255,1);
+                motor_turnHardLeft(70,255,1);
             } if (dig.r3 == 0) {
-                motor_turn(250,10,20);   
+             //   motor_turn(255,5,1);   
+                motor_turnHardRight(255,70,1);
             }
         }else {
             if(left == 0){
-                motor_turn(20,250,20);   
+                motor_turn(10,255,1);  
             } else if (right == 0) {
-                motor_turn(250,20,20);   
+                motor_turn(255,10,1);  
             }
         }
         if(!(dig.l1 ==  1 && dig.r1 == 1 && dig.r3 == 1 && dig.l3 == 1)){
@@ -311,11 +368,7 @@ int main()
             right3 = dig.r3;
             left3 = dig.l3;
         }
-        
-        
-        
-    }
-}   
+}
 //*/
 
  /* //motor//
