@@ -47,60 +47,21 @@ void blinking_led ();
 void check_battery ();
 void move();
 int threshold_calculator (int black, int white);
-    int left = 1;
+    int left1 = 1;
     int left3 = 1;
-    int right = 1;
+    int right1 = 1;
     int right3 = 1;
 
     int blackLines=0;
+
+void move_smooth();
+
 /**
  * @file    main.c
  * @brief   
  * @details  ** You should enable global interrupt for operating properly. **<br>&nbsp;&nbsp;&nbsp;CyGlobalIntEnable;<br>
 */
 
-
-//battery level//
-
-/*int main()
-{
-    CyGlobalIntEnable; 
-    UART_1_Start();
-    ADC_Battery_Start();        
-    //int16 adcresult =0;
-    //float volts = 0.0;
-
-    printf("\nBoot\n");
-    
-    //BatteryLed_Write(1); // Switch led on 
-    //BatteryLed_Write(0); // Switch led off
-
-    //uint8 button;
-    //button = SW1_Read(); // read SW1 on pSoC board
-    while (SW1_Read() == 1);
-    printf("Startting program\n");
-    BatteryLed_Write(1); // Switch led on
-    check_battery();
-    CyDelay(2000);
-        
-    motor_start();                  // motor start
-        
-    motor_turn(230,250,1800);       //go forward
-    motor_turn(250,10,335);          //turn 90 degrees right
-    motor_turn(230,250,1300);       //go forward
-    motor_turn(250,10,335);          //turn 90 degrees right
-    motor_turn(230,250,1400);       //go forward
-    motor_turn(250,10,375);          //turn 90+ degrees right
-    motor_turn(200,150,2000);       //turn smooth right
-    motor_turn(233,250,300);
-  //motor_backward(50,2000);        //moving backward
-       
-    motor_stop();                   // motor stop
-    
-    // test comment
-    
-    return 0;
- }*/
 void check_battery () {
     int16 adcresult =0;
     float volts = 0.0;
@@ -128,6 +89,77 @@ void blinking_led () {
        CyDelay(500);
     }
     
+}
+int main()
+{
+    ADC_Battery_Start();
+    CyGlobalIntEnable; 
+    UART_1_Start();
+  
+    sensor_isr_StartEx(sensor_isr_handler);
+    
+    reflectance_start();
+
+    IR_led_Write(1);
+    
+    CyDelay(10);
+   
+    BatteryLed_Write(1); // Switch led on
+    check_battery();
+    
+    struct sensors_ ref;
+    
+    reflectance_read(&ref);
+    
+    while (SW1_Read() == 1); //Start to move
+    CyDelay(1000);
+    left1 = 0, right1 = 0;
+    motor_start();
+    while(1){
+        move_smooth();
+    } 
+    motor_stop();
+}
+
+void move_smooth(){
+    struct sensors_ ref;
+ 
+    
+    reflectance_read(&ref);
+    
+    int right = (24000-ref.l1);
+    int left = (24000 - ref.r1);
+    //CyDelay(1000);
+    //printf("left=%d, right=%d\n", (24000-ref.l1), (24000-ref.r1));
+    
+    /*if(left<4000 && right<4000){
+        motor_forward(160, 5);
+    } else if (left<2000 && right>2000){
+        motor_turn(160, 5);
+    }*/
+    
+    left = 255 - left/94;
+    right = 255 - right/94;
+    
+    left /=2;
+    right /=2;
+    
+    if(left>50 && right>50){
+        motor_turn(left, right, 1);
+        if(right>left){
+            left1 = 1;
+            right1 = 0;
+        }
+        else {
+            left1 = 0;
+            right1 = 1;
+        }
+    } else if (left<100 && right<100) {
+        if (right1)
+            motor_turn(250, 0, 1);
+        else
+            motor_turn(0, 250, 1);
+    }
 }
 //*/
 
@@ -258,7 +290,7 @@ int main()
 
 
 //reflectance//
-int main()
+/*int main()
 {
     ADC_Battery_Start();
     CyGlobalIntEnable; 
@@ -369,29 +401,7 @@ void move () {
             left3 = dig.l3;
         }
 }
-//*/
-
- /* //motor//
-int main()
-{
-    CyGlobalIntEnable; 
-    UART_1_Start();
-
-    motor_start();              // motor start
-
-    motor_forward(100,2000);     // moving forward
-    motor_turn(200,50,2000);     // turn
-    motor_turn(50,200,2000);     // turn
-    motor_backward(100,2000);    // movinb backward
-       
-    motor_stop();               // motor stop
-    
-    for(;;)
-    {
-
-    }
-}
-//*/
+*/
     
 
 /*//gyroscope//
