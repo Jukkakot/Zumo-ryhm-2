@@ -31,6 +31,7 @@
 
 #include <project.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "Motor.h"
 #include "Ultra.h"
 #include "Nunchuk.h"
@@ -41,6 +42,8 @@
 #include "IR.h"
 #include "Ambient.h"
 #include "Beep.h"
+
+
 
 int rread(void);
 void blinking_led ();
@@ -54,6 +57,10 @@ int threshold_calculator (int black, int white);
 
     int blackLines=0;
 
+    int far_left_white;
+    int left_white;
+    int right_white;
+    int far_right_white;
 void move_smooth();
 
 /**
@@ -107,16 +114,38 @@ int main()
     BatteryLed_Write(1); // Switch led on
     check_battery();
     
+    while (SW1_Read() == 1); //Start calibrate 
     struct sensors_ ref;
-    
     reflectance_read(&ref);
     
+    far_left_white = ref.l3;
+    left_white = ref.l1;
+    right_white = ref.r1;
+    far_right_white = ref.r3;
+
+    BatteryLed_Write(1); // Switch led on 
+       CyDelay(50);
+       BatteryLed_Write(0); // Switch led off
+       CyDelay(500);
+    BatteryLed_Write(1); // Switch led on 
+       CyDelay(50);
+       BatteryLed_Write(0); // Switch led off
+       CyDelay(500);
+    BatteryLed_Write(1); // Switch led on 
+       CyDelay(50);
+       BatteryLed_Write(0); // Switch led off
+       CyDelay(500);
     while (SW1_Read() == 1); //Start to move
-    CyDelay(1000);
+    BatteryLed_Write(1);
+    
+    CyDelay(500);
     left1 = 0, right1 = 0;
+    reflectance_read(&ref);
+    
     motor_start();
     while(1){
         move_smooth();
+        
     } 
     motor_stop();
 }
@@ -127,38 +156,51 @@ void move_smooth(){
     
     reflectance_read(&ref);
     
-    int right = (24000-ref.l1);
-    int left = (24000 - ref.r1);
-    //CyDelay(1000);
-    //printf("left=%d, right=%d\n", (24000-ref.l1), (24000-ref.r1));
+    int right = (int)((((double)ref.r1 - (double)right_white)/(23999.0 - (double)right_white))*255.0);
+    int left = (int)((((double)ref.l1 - (double)left_white)/(23999.0 - (double)left_white))*255.0);
+    int far_right = (int)((((double)ref.r3 - (double)far_right_white)/(23999.0 - (double)far_right_white))* 255.0);
+    int far_left = (int)((((double)ref.l3 - (double)far_left_white)/(23999.0 - (double)far_left_white)) * 255.0);
     
-    /*if(left<4000 && right<4000){
-        motor_forward(160, 5);
-    } else if (left<2000 && right>2000){
-        motor_turn(160, 5);
-    }*/
     
-    left = 255 - left/94;
-    right = 255 - right/94;
-    
-    left /=2;
-    right /=2;
-    
-    if(left>50 && right>50){
-        motor_turn(left, right, 1);
-        if(right>left){
-            left1 = 1;
+    if(right <1) right = 1;
+    if(left <1) left = 1;
+    if(far_left<1) far_left = 1;
+    if(far_right<1) far_right = 1;
+   
+    if(left >10 || right >10) {
+        if(left < right) {
+         right1 = 1;
+         left1 = 0;
+        }else{
             right1 = 0;
+            left1 = 1;
         }
-        else {
-            left1 = 0;
-            right1 = 1;
-        }
-    } else if (left<100 && right<100) {
-        if (right1)
-            motor_turn(250, 0, 1);
-        else
-            motor_turn(0, 250, 1);
+    }
+  //  printf("%d %d %d %d\n",far_left,left,right,far_right);
+    int right_motor_speed = (int)(127.0*((double)left/((double)left+(double)right)) + 127.0 *((double)far_left/((double)far_left+(double)far_right)));
+    int left_motor_speed = (int)(127.0*((double)right/((double)left+(double)right)) + 127.0 *((double)far_right/((double)far_left+(double)far_right)));
+    double highest;
+    double multiplier;
+
+    if (left_motor_speed > right_motor_speed) {
+        highest = left_motor_speed;
+        
+    } else {
+        highest = right_motor_speed;
+    }
+    multiplier = 255.0/highest;
+    
+    left_motor_speed =(int)((double)left_motor_speed* multiplier);
+    right_motor_speed = (int)((double)right_motor_speed*multiplier);
+    
+    //printf("Left motor %d  Right motor %d\n", left_motor_speed, right_motor_speed);
+    
+    if(left_motor_speed - right_motor_speed > 150) {
+        motor_turnHardRight(left_motor_speed,right_motor_speed,1);
+    } else if( right_motor_speed - left_motor_speed > 150) {
+        motor_turnHardLeft(left_motor_speed,right_motor_speed,1);
+    } else {
+        motor_turn(left_motor_speed ,right_motor_speed,1);
     }
 }
 //*/

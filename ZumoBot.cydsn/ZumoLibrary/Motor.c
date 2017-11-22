@@ -51,6 +51,8 @@ void motor_forward(uint8 speed,uint32 delay)
 */
 void motor_turn(uint8 l_speed, uint8 r_speed, uint32 delay)
 {
+    MotorDirLeft_Write(0);
+    MotorDirRight_Write(0);
     PWM_WriteCompare1(l_speed); 
     PWM_WriteCompare2(r_speed); 
     CyDelay(delay);
@@ -73,14 +75,16 @@ void motor_backward(uint8 speed,uint32 delay)
 }
 void motor_turnHardLeft (uint8 speed1,uint8 speed2,uint32 delay)
 {
-    MotorDirLeft_Write(1);
+    MotorDirLeft_Write(1);      // set LeftMotor backward mode
+    MotorDirRight_Write(0);
     PWM_WriteCompare1(speed1); 
     PWM_WriteCompare2(speed2);
     CyDelay(delay);
 }
 void motor_turnHardRight (uint8 speed1, uint8 speed2  ,uint32 delay)
 {
-    MotorDirRight_Write(1);
+    MotorDirLeft_Write(0);
+    MotorDirRight_Write(1);     // set RightMotor backward mode
     PWM_WriteCompare1(speed1); 
     PWM_WriteCompare2(speed2);
     CyDelay(delay);

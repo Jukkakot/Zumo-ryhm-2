@@ -259,6 +259,9 @@
 <v>Zumo\ZumoBot\Generated_Source\PSoC5\project.h</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>Zumo</v>
+<v>Zumo\ZumoBot</v>
+<v>Zumo\ZumoBot\TopDesign</v>
 <v>Zumo\ZumoBot\ZumoBot.cydwr</v>
 <v>Zumo\ZumoBot\ZumoBot.cydwr\Pins</v>
 <v>Zumo\ZumoBot\ZumoBot.cydwr\Analog</v>
@@ -304,9 +307,6 @@
 <v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_Bypass</v>
 <v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_Bypass\ADC_Battery_Bypass.c</v>
 <v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_Bypass\ADC_Battery_Bypass.h</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_Bypass\ADC_Battery_Bypass_aliases.h</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_IRQ</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5\ADC_Battery_IRQ\ADC_Battery_IRQ.c</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
