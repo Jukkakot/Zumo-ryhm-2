@@ -61,7 +61,16 @@ int threshold_calculator (int black, int white);
     int left_white;
     int right_white;
     int far_right_white;
+
+    int previous_right3;
+    int previous_left3;
+
+    int blacklines;
+
+    int is_on_blackline = 0;
+
 void move_smooth();
+void move_to_blackline ();
 
 /**
  * @file    main.c
@@ -99,6 +108,7 @@ void blinking_led () {
 }
 int main()
 {
+    struct sensors_ ref;
     ADC_Battery_Start();
     CyGlobalIntEnable; 
     UART_1_Start();
@@ -115,7 +125,7 @@ int main()
     check_battery();
     
     while (SW1_Read() == 1); //Start calibrate 
-    struct sensors_ ref;
+    
     reflectance_read(&ref);
     
     far_left_white = ref.l3;
@@ -123,25 +133,32 @@ int main()
     right_white = ref.r1;
     far_right_white = ref.r3;
 
-    BatteryLed_Write(1); // Switch led on 
+       BatteryLed_Write(1); // Switch led on 
        CyDelay(50);
        BatteryLed_Write(0); // Switch led off
        CyDelay(500);
-    BatteryLed_Write(1); // Switch led on 
+       BatteryLed_Write(1); // Switch led on 
        CyDelay(50);
        BatteryLed_Write(0); // Switch led off
-       CyDelay(500);
-    BatteryLed_Write(1); // Switch led on 
-       CyDelay(50);
-       BatteryLed_Write(0); // Switch led off
-       CyDelay(500);
-    while (SW1_Read() == 1); //Start to move
-    BatteryLed_Write(1);
     
+    while (SW1_Read() == 1); //Move to blackline
+    BatteryLed_Write(1);    // Switch led on 
+    motor_start();
+    
+    while(is_on_blackline == 0) {
+        motor_forward(255,1);
+        reflectance_read(&ref);
+       /* if (ref.l3 > 23500 && ref.r3 > 23500) {
+         is_on_blackline = 1; 
+        }*/ 
+       }
+    motor_stop();
+    BatteryLed_Write(0);    // Switch led off
     CyDelay(500);
-    left1 = 0, right1 = 0;
-    reflectance_read(&ref);
     
+    while (SW1_Read() == 1); //Start the race
+    left1 = 0, right1 = 0;
+    BatteryLed_Write(1);    // Switch led on 
     motor_start();
     while(1){
         move_smooth();
@@ -152,8 +169,6 @@ int main()
 
 void move_smooth(){
     struct sensors_ ref;
- 
-    
     reflectance_read(&ref);
     
     int right = (int)((((double)ref.r1 - (double)right_white)/(23999.0 - (double)right_white))*255.0);
@@ -177,8 +192,8 @@ void move_smooth(){
         }
     }
   //  printf("%d %d %d %d\n",far_left,left,right,far_right);
-    int right_motor_speed = (int)(127.0*((double)left/((double)left+(double)right)) + 127.0 *((double)far_left/((double)far_left+(double)far_right)));
-    int left_motor_speed = (int)(127.0*((double)right/((double)left+(double)right)) + 127.0 *((double)far_right/((double)far_left+(double)far_right)));
+    int right_motor_speed = (int)(4.0*((double)left/((double)left+(double)right)) + 5.0 *((double)far_left/((double)far_left+(double)far_right)));
+    int left_motor_speed = (int)(4.0*((double)right/((double)left+(double)right)) + 5.0 *((double)far_right/((double)far_left+(double)far_right)));
     double highest;
     double multiplier;
 
@@ -195,140 +210,37 @@ void move_smooth(){
     
     //printf("Left motor %d  Right motor %d\n", left_motor_speed, right_motor_speed);
     
-    if(left_motor_speed - right_motor_speed > 150) {
+    if(left_motor_speed - right_motor_speed > 120) {
         motor_turnHardRight(left_motor_speed,right_motor_speed,1);
-    } else if( right_motor_speed - left_motor_speed > 150) {
+    } else if( right_motor_speed - left_motor_speed > 120) {
         motor_turnHardLeft(left_motor_speed,right_motor_speed,1);
     } else {
         motor_turn(left_motor_speed ,right_motor_speed,1);
     }
+    
+    
+    if (ref.r3 < 23500 && ref.l3 < 23500 && previous_left3 > 23500 && previous_right3 > 23500) {
+        blacklines++;
+    }
+    if(blacklines >= 2 && ref.r3 < 23500 && ref.l3 < 23500 ) {
+        motor_stop();
+    }
+    previous_left3 = ref.l3;
+    previous_right3 = ref.r3;
+    
+}
+
+void move_to_blackline (){
+    struct sensors_ ref;
+    reflectance_read(&ref);
+
+    move_smooth();
+        if (ref.l3 > 23500 && ref.r3 > 23500) {
+         is_on_blackline = 1; 
+        } 
 }
 //*/
 
-
-/*//ultra sonic sensor//
-int main()
-{
-    CyGlobalIntEnable; 
-    UART_1_Start();
-    Ultra_Start();                          // Ultra Sonic Start function
-    while(1) {
-        //If you want to print out the value  
-        printf("distance = %5.0f\r\n", Ultra_GetDistance());
-        CyDelay(1000);
-    }
-}   
-//*/
-
-
-/*//nunchuk//
-int main()
-{
-    CyGlobalIntEnable; 
-    UART_1_Start();
-  
-    nunchuk_start();
-    nunchuk_init();
-    
-    for(;;)
-    {    
-        nunchuk_read();
-    }
-}   
-//*/
-
-
-/*//IR receiver//
-int main()
-{
-    CyGlobalIntEnable; 
-    UART_1_Start();
-    
-    unsigned int IR_val; 
-    
-    for(;;)
-    {
-       IR_val = get_IR();
-       printf("%x\r\n\n",IR_val);
-    }    
- }   
-//*/
-
-
-/*//Ambient light sensor//
-int main()
-{
-    CyGlobalIntEnable; 
-    UART_1_Start();
-    
-    I2C_Start();
-    
-    I2C_write(0x29,0x80,0x00);          // set to power down
-    I2C_write(0x29,0x80,0x03);          // set to power on
-    
-    for(;;)
-    {    
-        uint8 Data0Low,Data0High,Data1Low,Data1High;
-        Data0Low = I2C_read(0x29,CH0_L);
-        Data0High = I2C_read(0x29,CH0_H);
-        Data1Low = I2C_read(0x29,CH1_L);
-        Data1High = I2C_read(0x29,CH1_H);
-        
-        uint8 CH0, CH1;
-        CH0 = convert_raw(Data0Low,Data0High);      // combine Data0
-        CH1 = convert_raw(Data1Low,Data1High);      // combine Data1
-
-        double Ch0 = CH0;
-        double Ch1 = CH1;
-        
-        double data = 0;
-        data = getLux(Ch0,Ch1);
-        
-        // If you want to print out data
-        //printf("%lf\r\n",data);    
-    }    
- }   
-//*/
-
-
-/*//accelerometer//
-int main()
-{
-    CyGlobalIntEnable; 
-    UART_1_Start();
-  
-    I2C_Start();
-  
-    uint8 X_L_A, X_H_A, Y_L_A, Y_H_A, Z_L_A, Z_H_A;
-    int16 X_AXIS_A, Y_AXIS_A, Z_AXIS_A;
-    
-    I2C_write(ACCEL_MAG_ADDR, ACCEL_CTRL1_REG, 0x37);           // set accelerometer & magnetometer into active mode
-    I2C_write(ACCEL_MAG_ADDR, ACCEL_CTRL7_REG, 0x22);
-    
-    
-    for(;;)
-    {
-        //print out accelerometer output
-        X_L_A = I2C_read(ACCEL_MAG_ADDR, OUT_X_L_A);
-        X_H_A = I2C_read(ACCEL_MAG_ADDR, OUT_X_H_A);
-        X_AXIS_A = convert_raw(X_L_A, X_H_A);
-        
-        Y_L_A = I2C_read(ACCEL_MAG_ADDR, OUT_Y_L_A);
-        Y_H_A = I2C_read(ACCEL_MAG_ADDR, OUT_Y_H_A);
-        Y_AXIS_A = convert_raw(Y_L_A, Y_H_A);
-        
-        Z_L_A = I2C_read(ACCEL_MAG_ADDR, OUT_Z_L_A);
-        Z_H_A = I2C_read(ACCEL_MAG_ADDR, OUT_Z_H_A);
-        Z_AXIS_A = convert_raw(Z_L_A, Z_H_A);
-        
-        printf("ACCEL: %d %d %d %d %d %d \r\n", X_L_A, X_H_A, Y_L_A, Y_H_A, Z_L_A, Z_H_A);
-        value_convert_accel(X_AXIS_A, Y_AXIS_A, Z_AXIS_A);
-        printf("\n");
-        
-        CyDelay(50);
-    }
-}   
-//*/
 
 
 //reflectance//
@@ -396,23 +308,14 @@ int main()
 }
 int threshold_calculator (int black, int white) {
  return white + ((black - white)/2);   
-}
+}*/
+/*
 void move () {
-    struct sensors_ ref;
-    struct sensors_ dig;
-    
-    reflectance_read(&ref);
-        //printf("%d %d %d %d \r\n", ref.l3, ref.l1, ref.r1, ref.r3);       //print out each period of reflectance sensors
-        reflectance_digital(&dig);      //print out 0 or 1 according to results of reflectance period
-       // printf("%d %d %d %d \r\n", dig.l3, dig.l1, dig.r1, dig.r3);        //print out 0 or 1 according to results of reflectance period
-       // CyDelay(100);
-        if (!(left == 0 && left3 == 0 && right == 0 && right3 == 0) && (dig.l1 ==  0 && dig.r1 == 0 && dig.r3 == 0 && dig.l3 == 0) ){
-            blackLines +=1;
-        }
-        
-        
-        
-        
+
+        struct sensors_ dig;
+
+        reflectance_digital(&dig);      
+   
         if( (dig.l1 == 0 && dig.r1 == 0 && dig.l3 == 1 && dig.r3 == 1) || (dig.l1 == 0 && dig.r1 == 0 && dig.l3 == 0 && dig.r3 == 0)){
             motor_forward(255,1);
         }
@@ -429,100 +332,13 @@ void move () {
              //   motor_turn(255,5,1);   
                 motor_turnHardRight(255,70,1);
             }
-        }else {
-            if(left == 0){
-                motor_turn(10,255,1);  
-            } else if (right == 0) {
-                motor_turn(255,10,1);  
-            }
         }
-        if(!(dig.l1 ==  1 && dig.r1 == 1 && dig.r3 == 1 && dig.l3 == 1)){
-            left = dig.l1;
-            right = dig.r1;
-            right3 = dig.r3;
-            left3 = dig.l3;
-        }
+       
 }
 */
+
     
 
-/*//gyroscope//
-int main()
-{
-    CyGlobalIntEnable; 
-    UART_1_Start();
-  
-    I2C_Start();
-  
-    uint8 X_L_G, X_H_G, Y_L_G, Y_H_G, Z_L_G, Z_H_G;
-    int16 X_AXIS_G, Y_AXIS_G, Z_AXIS_G;
-    
-    I2C_write(GYRO_ADDR, GYRO_CTRL1_REG, 0x0F);             // set gyroscope into active mode
-    I2C_write(GYRO_ADDR, GYRO_CTRL4_REG, 0x30);             // set full scale selection to 2000dps    
-    
-    for(;;)
-    {
-        //print out gyroscope output
-        X_L_G = I2C_read(GYRO_ADDR, OUT_X_AXIS_L);
-        X_H_G = I2C_read(GYRO_ADDR, OUT_X_AXIS_H);
-        X_AXIS_G = convert_raw(X_H_G, X_L_G);
-        
-        
-        Y_L_G = I2C_read(GYRO_ADDR, OUT_Y_AXIS_L);
-        Y_H_G = I2C_read(GYRO_ADDR, OUT_Y_AXIS_H);
-        Y_AXIS_G = convert_raw(Y_H_G, Y_L_G);
-        
-        
-        Z_L_G = I2C_read(GYRO_ADDR, OUT_Z_AXIS_L);
-        Z_H_G = I2C_read(GYRO_ADDR, OUT_Z_AXIS_H);
-        Z_AXIS_G = convert_raw(Z_H_G, Z_L_G);
-     
-        // If you want to print value
-        printf("%d %d %d \r\n", X_AXIS_G, Y_AXIS_G, Z_AXIS_G);
-        CyDelay(50);
-    }
-}   
-//*/
-
-
-/*//magnetometer//
-int main()
-{
-    CyGlobalIntEnable; 
-    UART_1_Start();
-  
-    I2C_Start();
-   
-    uint8 X_L_M, X_H_M, Y_L_M, Y_H_M, Z_L_M, Z_H_M;
-    int16 X_AXIS, Y_AXIS, Z_AXIS;
-    
-    I2C_write(GYRO_ADDR, GYRO_CTRL1_REG, 0x0F);             // set gyroscope into active mode
-    I2C_write(GYRO_ADDR, GYRO_CTRL4_REG, 0x30);             // set full scale selection to 2000dps
-    I2C_write(ACCEL_MAG_ADDR, ACCEL_CTRL1_REG, 0x37);           // set accelerometer & magnetometer into active mode
-    I2C_write(ACCEL_MAG_ADDR, ACCEL_CTRL7_REG, 0x22);
-    
-    
-    for(;;)
-    {
-        X_L_M = I2C_read(ACCEL_MAG_ADDR, OUT_X_L_M);
-        X_H_M = I2C_read(ACCEL_MAG_ADDR, OUT_X_H_M);
-        X_AXIS = convert_raw(X_L_M, X_H_M);
-        
-        Y_L_M = I2C_read(ACCEL_MAG_ADDR, OUT_Y_L_M);
-        Y_H_M = I2C_read(ACCEL_MAG_ADDR, OUT_Y_H_M);
-        Y_AXIS = convert_raw(Y_L_M, Y_H_M);
-        
-        Z_L_M = I2C_read(ACCEL_MAG_ADDR, OUT_Z_L_M);
-        Z_H_M = I2C_read(ACCEL_MAG_ADDR, OUT_Z_H_M);
-        Z_AXIS = convert_raw(Z_L_M, Z_H_M);
-        
-        heading(X_AXIS, Y_AXIS);
-        printf("MAGNET: %d %d %d %d %d %d \r\n", X_L_M, X_H_M, Y_L_M, Y_H_M, Z_L_M, Z_H_M);
-        printf("%d %d %d \r\n", X_AXIS,Y_AXIS, Z_AXIS);
-        CyDelay(50);      
-    }
-}   
-//*/
 
 
 #if 0
