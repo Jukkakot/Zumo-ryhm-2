@@ -443,7 +443,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1071, 459" SelectedTabbedMdiWindow="25deffb3-7e3d-4533-a517-8952cbbf452b"><DocumentWindow Key="9b0a450c-f648-4c66-9286-d3379ab3216b" Guid="25deffb3-7e3d-4533-a517-8952cbbf452b" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1101, 459" SelectedTabbedMdiWindow="db0ab4f8-ef77-4892-bda9-e4986df7ed89"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="4f39f7ee-6197-4199-9d2a-4e4eb7fcac64" /><DocumentWindow Key="6371a579-2ae8-4361-81d9-71eb1a8733c6" Guid="db0ab4f8-ef77-4892-bda9-e4986df7ed89" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

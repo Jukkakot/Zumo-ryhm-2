@@ -55,17 +55,15 @@ int threshold_calculator (int black, int white);
     int right1 = 1;
     int right3 = 1;
 
-    int blackLines=0;
-
     int far_left_white;
     int left_white;
     int right_white;
     int far_right_white;
 
-    int previous_right3;
-    int previous_left3;
+    int previous_right3 = 0;
+    int previous_left3 = 0;
 
-    int blacklines;
+    int blacklines = 0;
 
     int is_on_blackline = 0;
 
@@ -116,6 +114,7 @@ int main()
     sensor_isr_StartEx(sensor_isr_handler);
     
     reflectance_start();
+    reflectance_set_threshold(14700, 14750, 14600, 15950);
 
     IR_led_Write(1);
     
@@ -146,11 +145,11 @@ int main()
     motor_start();
     
     while(is_on_blackline == 0) {
-        motor_forward(255,1);
+        motor_forward(100,5);
         reflectance_read(&ref);
-       /* if (ref.l3 > 23500 && ref.r3 > 23500) {
+       if (ref.l3 > 23500 && ref.r3 > 23500) {
          is_on_blackline = 1; 
-        }*/ 
+        }
        }
     motor_stop();
     BatteryLed_Write(0);    // Switch led off
@@ -160,16 +159,30 @@ int main()
     left1 = 0, right1 = 0;
     BatteryLed_Write(1);    // Switch led on 
     motor_start();
-    while(1){
+    while(blacklines<=3){
         move_smooth();
-        
+        //printf("%d", blacklines);
     } 
     motor_stop();
+    return 0;
 }
 
 void move_smooth(){
     struct sensors_ ref;
+    struct sensors_ dig;
     reflectance_read(&ref);
+    reflectance_digital(&dig);
+    
+    if (left3 == 1 && right3 == 1 && (dig.l1 ==  0 && dig.r1 == 0 && dig.r3 == 0 && dig.l3 == 0) ){
+            blacklines +=1;
+    }
+    /*if (ref.r3 > 10000 && ref.l3 > 10000 && previous_left3 < 10000 && previous_right3 < 10000 && ref.r1>10000 && ref.l1>10000) {
+        blacklines++;
+    }
+    if(blacklines >= 3 && ref.r3 > 10000 && ref.l3 > 10000  && ref.r1>10000 && ref.l1>10000) {
+        motor_forward(0,0);
+        motor_stop();
+    }*/
     
     int right = (int)((((double)ref.r1 - (double)right_white)/(23999.0 - (double)right_white))*255.0);
     int left = (int)((((double)ref.l1 - (double)left_white)/(23999.0 - (double)left_white))*255.0);
@@ -218,16 +231,13 @@ void move_smooth(){
         motor_turn(left_motor_speed ,right_motor_speed,1);
     }
     
-    
-    if (ref.r3 < 23500 && ref.l3 < 23500 && previous_left3 > 23500 && previous_right3 > 23500) {
-        blacklines++;
-    }
-    if(blacklines >= 2 && ref.r3 < 23500 && ref.l3 < 23500 ) {
-        motor_stop();
-    }
     previous_left3 = ref.l3;
     previous_right3 = ref.r3;
     
+    left1 = dig.l1;
+    left3 = dig.l3;
+    right1 = dig.r1;
+    right3 = dig.r3;
 }
 
 void move_to_blackline (){

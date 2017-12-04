@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
   40              	.LFE63:
   41              		.size	motor_start, .-motor_start
   42              		.section	.text.motor_stop,"ax",%progbits
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 2
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 2
 
 
   43              		.align	2
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
   76              		@ frame_needed = 0, uses_anonymous_args = 0
   77              	.LVL2:
   78 0000 38B5     		push	{r3, r4, r5, lr}
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 3
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 3
 
 
   79              		.cfi_def_cfa_offset 16
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
   51:ZumoLibrary/Motor.c **** */
   52:ZumoLibrary/Motor.c **** void motor_turn(uint8 l_speed, uint8 r_speed, uint32 delay)
   53:ZumoLibrary/Motor.c **** {
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 4
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 4
 
 
  119              		.loc 1 53 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
   61:ZumoLibrary/Motor.c **** 
   62:ZumoLibrary/Motor.c **** /**
   63:ZumoLibrary/Motor.c **** * @brief    Moving motors backward
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 5
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 5
 
 
   64:ZumoLibrary/Motor.c **** * @details  setting backward mode to each motors and gives same speed to each side of PWM
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  209              		.type	motor_turnHardLeft, %function
  210              	motor_turnHardLeft:
  211              	.LFB68:
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 6
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 6
 
 
   75:ZumoLibrary/Motor.c **** }
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  258              	.LFB69:
   83:ZumoLibrary/Motor.c **** }
   84:ZumoLibrary/Motor.c **** void motor_turnHardRight (uint8 speed1, uint8 speed2  ,uint32 delay)
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 7
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 7
 
 
   85:ZumoLibrary/Motor.c **** {
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  307              		.file 9 "Generated_Source\\PSoC5/CyLib.h"
  308              		.section	.debug_info,"",%progbits
  309              	.Ldebug_info0:
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 8
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 8
 
 
  310 0000 67040000 		.4byte	0x467
@@ -426,50 +426,50 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  312 0006 00000000 		.4byte	.Ldebug_abbrev0
  313 000a 04       		.byte	0x4
  314 000b 01       		.uleb128 0x1
- 315 000c F8000000 		.4byte	.LASF36
+ 315 000c 01010000 		.4byte	.LASF36
  316 0010 01       		.byte	0x1
- 317 0011 DD000000 		.4byte	.LASF37
- 318 0015 E2010000 		.4byte	.LASF38
+ 317 0011 E6000000 		.4byte	.LASF37
+ 318 0015 34020000 		.4byte	.LASF38
  319 0019 00000000 		.4byte	.Ldebug_ranges0+0
  320 001d 00000000 		.4byte	0
  321 0021 00000000 		.4byte	.Ldebug_line0
  322 0025 02       		.uleb128 0x2
  323 0026 01       		.byte	0x1
  324 0027 06       		.byte	0x6
- 325 0028 49000000 		.4byte	.LASF0
+ 325 0028 52000000 		.4byte	.LASF0
  326 002c 02       		.uleb128 0x2
  327 002d 01       		.byte	0x1
  328 002e 08       		.byte	0x8
- 329 002f 5B000000 		.4byte	.LASF1
+ 329 002f 64000000 		.4byte	.LASF1
  330 0033 02       		.uleb128 0x2
  331 0034 02       		.byte	0x2
  332 0035 05       		.byte	0x5
- 333 0036 79020000 		.4byte	.LASF2
+ 333 0036 20020000 		.4byte	.LASF2
  334 003a 02       		.uleb128 0x2
  335 003b 02       		.byte	0x2
  336 003c 07       		.byte	0x7
- 337 003d AA020000 		.4byte	.LASF3
+ 337 003d 87020000 		.4byte	.LASF3
  338 0041 03       		.uleb128 0x3
- 339 0042 00000000 		.4byte	.LASF9
+ 339 0042 09000000 		.4byte	.LASF9
  340 0046 02       		.byte	0x2
  341 0047 3F       		.byte	0x3f
  342 0048 4C000000 		.4byte	0x4c
  343 004c 02       		.uleb128 0x2
  344 004d 04       		.byte	0x4
  345 004e 05       		.byte	0x5
- 346 004f 96020000 		.4byte	.LASF4
+ 346 004f 73020000 		.4byte	.LASF4
  347 0053 02       		.uleb128 0x2
  348 0054 04       		.byte	0x4
  349 0055 07       		.byte	0x7
- 350 0056 69000000 		.4byte	.LASF5
+ 350 0056 72000000 		.4byte	.LASF5
  351 005a 02       		.uleb128 0x2
  352 005b 08       		.byte	0x8
  353 005c 05       		.byte	0x5
- 354 005d 53020000 		.4byte	.LASF6
+ 354 005d FA010000 		.4byte	.LASF6
  355 0061 02       		.uleb128 0x2
  356 0062 08       		.byte	0x8
  357 0063 07       		.byte	0x7
- 358 0064 9B010000 		.4byte	.LASF7
+ 358 0064 A4010000 		.4byte	.LASF7
  359 0068 04       		.uleb128 0x4
  360 0069 04       		.byte	0x4
  361 006a 05       		.byte	0x5
@@ -477,43 +477,43 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  363 006f 02       		.uleb128 0x2
  364 0070 04       		.byte	0x4
  365 0071 07       		.byte	0x7
- 366 0072 86010000 		.4byte	.LASF8
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 9
+ 366 0072 8F010000 		.4byte	.LASF8
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 9
 
 
  367 0076 03       		.uleb128 0x3
- 368 0077 3B000000 		.4byte	.LASF10
+ 368 0077 44000000 		.4byte	.LASF10
  369 007b 03       		.byte	0x3
  370 007c 2C       		.byte	0x2c
  371 007d 41000000 		.4byte	0x41
  372 0081 05       		.uleb128 0x5
- 373 0082 35000000 		.4byte	.LASF11
+ 373 0082 3E000000 		.4byte	.LASF11
  374 0086 04       		.byte	0x4
  375 0087 9201     		.2byte	0x192
  376 0089 2C000000 		.4byte	0x2c
  377 008d 05       		.uleb128 0x5
- 378 008e F1000000 		.4byte	.LASF12
+ 378 008e FA000000 		.4byte	.LASF12
  379 0092 04       		.byte	0x4
  380 0093 9401     		.2byte	0x194
  381 0095 53000000 		.4byte	0x53
  382 0099 02       		.uleb128 0x2
  383 009a 04       		.byte	0x4
  384 009b 04       		.byte	0x4
- 385 009c 43000000 		.4byte	.LASF13
+ 385 009c 4C000000 		.4byte	.LASF13
  386 00a0 02       		.uleb128 0x2
  387 00a1 08       		.byte	0x8
  388 00a2 04       		.byte	0x4
- 389 00a3 CB000000 		.4byte	.LASF14
+ 389 00a3 D4000000 		.4byte	.LASF14
  390 00a7 02       		.uleb128 0x2
  391 00a8 01       		.byte	0x1
  392 00a9 08       		.byte	0x8
- 393 00aa 61020000 		.4byte	.LASF15
+ 393 00aa 08020000 		.4byte	.LASF15
  394 00ae 02       		.uleb128 0x2
  395 00af 04       		.byte	0x4
  396 00b0 07       		.byte	0x7
- 397 00b1 4A020000 		.4byte	.LASF16
+ 397 00b1 F1010000 		.4byte	.LASF16
  398 00b5 06       		.uleb128 0x6
- 399 00b6 B2010000 		.4byte	.LASF17
+ 399 00b6 BB010000 		.4byte	.LASF17
  400 00ba 01       		.byte	0x1
  401 00bb 0D       		.byte	0xd
  402 00bc 00000000 		.4byte	.LFB63
@@ -526,7 +526,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  409 00cf 0B040000 		.4byte	0x40b
  410 00d3 00       		.byte	0
  411 00d4 06       		.uleb128 0x6
- 412 00d5 D2000000 		.4byte	.LASF18
+ 412 00d5 DB000000 		.4byte	.LASF18
  413 00d9 01       		.byte	0x1
  414 00da 17       		.byte	0x17
  415 00db 00000000 		.4byte	.LFB64
@@ -538,11 +538,11 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  421 00ea 06000000 		.4byte	.LVL1
  422 00ee 12040000 		.4byte	0x412
  423 00f2 00       		.byte	0
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 10
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 10
 
 
  424 00f3 08       		.uleb128 0x8
- 425 00f4 A9000000 		.4byte	.LASF21
+ 425 00f4 B2000000 		.4byte	.LASF21
  426 00f8 01       		.byte	0x1
  427 00f9 23       		.byte	0x23
  428 00fa 00000000 		.4byte	.LFB65
@@ -551,13 +551,13 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  431 0103 9C       		.byte	0x9c
  432 0104 85010000 		.4byte	0x185
  433 0108 09       		.uleb128 0x9
- 434 0109 44020000 		.4byte	.LASF19
+ 434 0109 EB010000 		.4byte	.LASF19
  435 010d 01       		.byte	0x1
  436 010e 23       		.byte	0x23
  437 010f 81000000 		.4byte	0x81
  438 0113 00000000 		.4byte	.LLST0
  439 0117 09       		.uleb128 0x9
- 440 0118 55000000 		.4byte	.LASF20
+ 440 0118 5E000000 		.4byte	.LASF20
  441 011c 01       		.byte	0x1
  442 011d 23       		.byte	0x23
  443 011e 8D000000 		.4byte	0x8d
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  478 0165 4C040000 		.4byte	0x44c
  479 0169 74010000 		.4byte	0x174
  480 016d 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 11
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 11
 
 
  481 016e 01       		.uleb128 0x1
@@ -619,7 +619,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  496 0183 00       		.byte	0
  497 0184 00       		.byte	0
  498 0185 08       		.uleb128 0x8
- 499 0186 9F020000 		.4byte	.LASF22
+ 499 0186 7C020000 		.4byte	.LASF22
  500 018a 01       		.byte	0x1
  501 018b 34       		.byte	0x34
  502 018c 00000000 		.4byte	.LFB66
@@ -628,19 +628,19 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  505 0195 9C       		.byte	0x9c
  506 0196 26020000 		.4byte	0x226
  507 019a 09       		.uleb128 0x9
- 508 019b 93010000 		.4byte	.LASF23
+ 508 019b 9C010000 		.4byte	.LASF23
  509 019f 01       		.byte	0x1
  510 01a0 34       		.byte	0x34
  511 01a1 81000000 		.4byte	0x81
  512 01a5 3F000000 		.4byte	.LLST2
  513 01a9 09       		.uleb128 0x9
- 514 01aa 19000000 		.4byte	.LASF24
+ 514 01aa 22000000 		.4byte	.LASF24
  515 01ae 01       		.byte	0x1
  516 01af 34       		.byte	0x34
  517 01b0 81000000 		.4byte	0x81
  518 01b4 60000000 		.4byte	.LLST3
  519 01b8 09       		.uleb128 0x9
- 520 01b9 55000000 		.4byte	.LASF20
+ 520 01b9 5E000000 		.4byte	.LASF20
  521 01bd 01       		.byte	0x1
  522 01be 34       		.byte	0x34
  523 01bf 8D000000 		.4byte	0x8d
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  535 01da 0A       		.uleb128 0xa
  536 01db 14000000 		.4byte	.LVL12
  537 01df 2A040000 		.4byte	0x42a
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 12
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 12
 
 
  538 01e3 ED010000 		.4byte	0x1ed
@@ -702,7 +702,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  576 0224 00       		.byte	0
  577 0225 00       		.byte	0
  578 0226 08       		.uleb128 0x8
- 579 0227 0A000000 		.4byte	.LASF25
+ 579 0227 13000000 		.4byte	.LASF25
  580 022b 01       		.byte	0x1
  581 022c 44       		.byte	0x44
  582 022d 00000000 		.4byte	.LFB67
@@ -711,14 +711,14 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  585 0236 9C       		.byte	0x9c
  586 0237 B8020000 		.4byte	0x2b8
  587 023b 09       		.uleb128 0x9
- 588 023c 44020000 		.4byte	.LASF19
+ 588 023c EB010000 		.4byte	.LASF19
  589 0240 01       		.byte	0x1
  590 0241 44       		.byte	0x44
  591 0242 81000000 		.4byte	0x81
  592 0246 9F000000 		.4byte	.LLST5
  593 024a 09       		.uleb128 0x9
- 594 024b 55000000 		.4byte	.LASF20
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 13
+ 594 024b 5E000000 		.4byte	.LASF20
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 13
 
 
  595 024f 01       		.byte	0x1
@@ -778,11 +778,11 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  649 02b5 00       		.sleb128 0
  650 02b6 00       		.byte	0
  651 02b7 00       		.byte	0
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 14
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 14
 
 
  652 02b8 08       		.uleb128 0x8
- 653 02b9 66020000 		.4byte	.LASF26
+ 653 02b9 0D020000 		.4byte	.LASF26
  654 02bd 01       		.byte	0x1
  655 02be 4C       		.byte	0x4c
  656 02bf 00000000 		.4byte	.LFB68
@@ -791,19 +791,19 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  659 02c8 9C       		.byte	0x9c
  660 02c9 59030000 		.4byte	0x359
  661 02cd 09       		.uleb128 0x9
- 662 02ce 8E000000 		.4byte	.LASF27
+ 662 02ce 97000000 		.4byte	.LASF27
  663 02d2 01       		.byte	0x1
  664 02d3 4C       		.byte	0x4c
  665 02d4 81000000 		.4byte	0x81
  666 02d8 DE000000 		.4byte	.LLST7
  667 02dc 09       		.uleb128 0x9
- 668 02dd 95000000 		.4byte	.LASF28
+ 668 02dd 9E000000 		.4byte	.LASF28
  669 02e1 01       		.byte	0x1
  670 02e2 4C       		.byte	0x4c
  671 02e3 81000000 		.4byte	0x81
  672 02e7 FF000000 		.4byte	.LLST8
  673 02eb 09       		.uleb128 0x9
- 674 02ec 55000000 		.4byte	.LASF20
+ 674 02ec 5E000000 		.4byte	.LASF20
  675 02f0 01       		.byte	0x1
  676 02f1 4C       		.byte	0x4c
  677 02f2 8D000000 		.4byte	0x8d
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  706 0330 02       		.uleb128 0x2
  707 0331 76       		.byte	0x76
  708 0332 00       		.sleb128 0
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 15
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 15
 
 
  709 0333 00       		.byte	0
@@ -865,7 +865,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  730 0357 00       		.byte	0
  731 0358 00       		.byte	0
  732 0359 08       		.uleb128 0x8
- 733 035a B7000000 		.4byte	.LASF29
+ 733 035a C0000000 		.4byte	.LASF29
  734 035e 01       		.byte	0x1
  735 035f 54       		.byte	0x54
  736 0360 00000000 		.4byte	.LFB69
@@ -874,19 +874,19 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  739 0369 9C       		.byte	0x9c
  740 036a FA030000 		.4byte	0x3fa
  741 036e 09       		.uleb128 0x9
- 742 036f 8E000000 		.4byte	.LASF27
+ 742 036f 97000000 		.4byte	.LASF27
  743 0373 01       		.byte	0x1
  744 0374 54       		.byte	0x54
  745 0375 81000000 		.4byte	0x81
  746 0379 3E010000 		.4byte	.LLST10
  747 037d 09       		.uleb128 0x9
- 748 037e 95000000 		.4byte	.LASF28
+ 748 037e 9E000000 		.4byte	.LASF28
  749 0382 01       		.byte	0x1
  750 0383 54       		.byte	0x54
  751 0384 81000000 		.4byte	0x81
  752 0388 5F010000 		.4byte	.LLST11
  753 038c 09       		.uleb128 0x9
- 754 038d 55000000 		.4byte	.LASF20
+ 754 038d 5E000000 		.4byte	.LASF20
  755 0391 01       		.byte	0x1
  756 0392 54       		.byte	0x54
  757 0393 8D000000 		.4byte	0x8d
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  763 03a8 0B       		.uleb128 0xb
  764 03a9 01       		.uleb128 0x1
  765 03aa 50       		.byte	0x50
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 16
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 16
 
 
  766 03ab 01       		.uleb128 0x1
@@ -948,25 +948,25 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  810 03f8 00       		.byte	0
  811 03f9 00       		.byte	0
  812 03fa 0D       		.uleb128 0xd
- 813 03fb 9C000000 		.4byte	.LASF39
+ 813 03fb A5000000 		.4byte	.LASF39
  814 03ff 08       		.byte	0x8
  815 0400 9606     		.2byte	0x696
  816 0402 06040000 		.4byte	0x406
  817 0406 0E       		.uleb128 0xe
  818 0407 76000000 		.4byte	0x76
  819 040b 0F       		.uleb128 0xf
- 820 040c 83020000 		.4byte	.LASF30
+ 820 040c 2A020000 		.4byte	.LASF30
  821 0410 05       		.byte	0x5
  822 0411 92       		.byte	0x92
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 17
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 17
 
 
  823 0412 0F       		.uleb128 0xf
- 824 0413 8D020000 		.4byte	.LASF31
+ 824 0413 00000000 		.4byte	.LASF31
  825 0417 05       		.byte	0x5
  826 0418 93       		.byte	0x93
  827 0419 10       		.uleb128 0x10
- 828 041a 7B000000 		.4byte	.LASF32
+ 828 041a 84000000 		.4byte	.LASF32
  829 041e 06       		.byte	0x6
  830 041f 26       		.byte	0x26
  831 0420 2A040000 		.4byte	0x42a
@@ -974,7 +974,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  833 0425 81000000 		.4byte	0x81
  834 0429 00       		.byte	0
  835 042a 10       		.uleb128 0x10
- 836 042b 21000000 		.4byte	.LASF33
+ 836 042b 2A000000 		.4byte	.LASF33
  837 042f 07       		.byte	0x7
  838 0430 26       		.byte	0x26
  839 0431 3B040000 		.4byte	0x43b
@@ -982,7 +982,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  841 0436 81000000 		.4byte	0x81
  842 043a 00       		.byte	0
  843 043b 10       		.uleb128 0x10
- 844 043c BE010000 		.4byte	.LASF34
+ 844 043c C7010000 		.4byte	.LASF34
  845 0440 05       		.byte	0x5
  846 0441 C7       		.byte	0xc7
  847 0442 4C040000 		.4byte	0x44c
@@ -990,7 +990,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  849 0447 81000000 		.4byte	0x81
  850 044b 00       		.byte	0
  851 044c 10       		.uleb128 0x10
- 852 044d D0010000 		.4byte	.LASF35
+ 852 044d D9010000 		.4byte	.LASF35
  853 0451 05       		.byte	0x5
  854 0452 CA       		.byte	0xca
  855 0453 5D040000 		.4byte	0x45d
@@ -998,7 +998,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  857 0458 81000000 		.4byte	0x81
  858 045c 00       		.byte	0
  859 045d 12       		.uleb128 0x12
- 860 045e BD020000 		.4byte	.LASF40
+ 860 045e 9A020000 		.4byte	.LASF40
  861 0462 09       		.byte	0x9
  862 0463 76       		.byte	0x76
  863 0464 11       		.uleb128 0x11
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  877 0008 0E       		.uleb128 0xe
  878 0009 1B       		.uleb128 0x1b
  879 000a 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 18
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 18
 
 
  880 000b 55       		.uleb128 0x55
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  934 0041 00       		.byte	0
  935 0042 00       		.byte	0
  936 0043 06       		.uleb128 0x6
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 19
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 19
 
 
  937 0044 2E       		.uleb128 0x2e
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  991 007e 00       		.byte	0
  992 007f 00       		.byte	0
  993 0080 09       		.uleb128 0x9
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 20
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 20
 
 
  994 0081 05       		.uleb128 0x5
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  1048 00be 3F       		.uleb128 0x3f
  1049 00bf 19       		.uleb128 0x19
  1050 00c0 3C       		.uleb128 0x3c
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 21
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 21
 
 
  1051 00c1 19       		.uleb128 0x19
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  1105 00f7 2E       		.uleb128 0x2e
  1106 00f8 01       		.byte	0x1
  1107 00f9 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 22
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 22
 
 
  1108 00fa 19       		.uleb128 0x19
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  1162 005c 00000000 		.4byte	0
  1163              	.LLST3:
  1164 0060 00000000 		.4byte	.LVL9
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 23
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 23
 
 
  1165 0064 0D000000 		.4byte	.LVL11-1
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  1219 00ed 28000000 		.4byte	.LFE68
  1220 00f1 0400     		.2byte	0x4
  1221 00f3 F3       		.byte	0xf3
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 24
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 24
 
 
  1222 00f4 01       		.uleb128 0x1
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  1276 0176 51       		.byte	0x51
  1277 0177 9F       		.byte	0x9f
  1278 0178 00000000 		.4byte	0
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 25
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 25
 
 
  1279 017c 00000000 		.4byte	0
@@ -1498,218 +1498,216 @@ ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 1
  1333              		.section	.debug_line,"",%progbits
  1334              	.Ldebug_line0:
  1335 0000 1A020000 		.section	.debug_str,"MS",%progbits,1
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 26
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 26
 
 
  1335      02008D01 
  1335      00000201 
  1335      FB0E0D00 
  1335      01010101 
- 1336              	.LASF9:
- 1337 0000 5F5F696E 		.ascii	"__int32_t\000"
- 1337      7433325F 
- 1337      7400
- 1338              	.LASF25:
- 1339 000a 6D6F746F 		.ascii	"motor_backward\000"
- 1339      725F6261 
- 1339      636B7761 
- 1339      726400
- 1340              	.LASF24:
- 1341 0019 725F7370 		.ascii	"r_speed\000"
- 1341      65656400 
- 1342              	.LASF33:
- 1343 0021 4D6F746F 		.ascii	"MotorDirRight_Write\000"
- 1343      72446972 
- 1343      52696768 
- 1343      745F5772 
- 1343      69746500 
- 1344              	.LASF11:
- 1345 0035 75696E74 		.ascii	"uint8\000"
- 1345      3800
- 1346              	.LASF10:
- 1347 003b 696E7433 		.ascii	"int32_t\000"
- 1347      325F7400 
- 1348              	.LASF13:
- 1349 0043 666C6F61 		.ascii	"float\000"
- 1349      7400
- 1350              	.LASF0:
- 1351 0049 7369676E 		.ascii	"signed char\000"
- 1351      65642063 
- 1351      68617200 
- 1352              	.LASF20:
- 1353 0055 64656C61 		.ascii	"delay\000"
- 1353      7900
- 1354              	.LASF1:
- 1355 005b 756E7369 		.ascii	"unsigned char\000"
- 1355      676E6564 
- 1355      20636861 
- 1355      7200
- 1356              	.LASF5:
- 1357 0069 6C6F6E67 		.ascii	"long unsigned int\000"
- 1357      20756E73 
- 1357      69676E65 
- 1357      6420696E 
- 1357      7400
- 1358              	.LASF32:
- 1359 007b 4D6F746F 		.ascii	"MotorDirLeft_Write\000"
- 1359      72446972 
- 1359      4C656674 
- 1359      5F577269 
- 1359      746500
- 1360              	.LASF27:
- 1361 008e 73706565 		.ascii	"speed1\000"
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 27
+ 1336              	.LASF31:
+ 1337 0000 50574D5F 		.ascii	"PWM_Stop\000"
+ 1337      53746F70 
+ 1337      00
+ 1338              	.LASF9:
+ 1339 0009 5F5F696E 		.ascii	"__int32_t\000"
+ 1339      7433325F 
+ 1339      7400
+ 1340              	.LASF25:
+ 1341 0013 6D6F746F 		.ascii	"motor_backward\000"
+ 1341      725F6261 
+ 1341      636B7761 
+ 1341      726400
+ 1342              	.LASF24:
+ 1343 0022 725F7370 		.ascii	"r_speed\000"
+ 1343      65656400 
+ 1344              	.LASF33:
+ 1345 002a 4D6F746F 		.ascii	"MotorDirRight_Write\000"
+ 1345      72446972 
+ 1345      52696768 
+ 1345      745F5772 
+ 1345      69746500 
+ 1346              	.LASF11:
+ 1347 003e 75696E74 		.ascii	"uint8\000"
+ 1347      3800
+ 1348              	.LASF10:
+ 1349 0044 696E7433 		.ascii	"int32_t\000"
+ 1349      325F7400 
+ 1350              	.LASF13:
+ 1351 004c 666C6F61 		.ascii	"float\000"
+ 1351      7400
+ 1352              	.LASF0:
+ 1353 0052 7369676E 		.ascii	"signed char\000"
+ 1353      65642063 
+ 1353      68617200 
+ 1354              	.LASF20:
+ 1355 005e 64656C61 		.ascii	"delay\000"
+ 1355      7900
+ 1356              	.LASF1:
+ 1357 0064 756E7369 		.ascii	"unsigned char\000"
+ 1357      676E6564 
+ 1357      20636861 
+ 1357      7200
+ 1358              	.LASF5:
+ 1359 0072 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1359      20756E73 
+ 1359      69676E65 
+ 1359      6420696E 
+ 1359      7400
+ 1360              	.LASF32:
+ 1361 0084 4D6F746F 		.ascii	"MotorDirLeft_Write\000"
+ 1361      72446972 
+ 1361      4C656674 
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 27
 
 
- 1361      643100
- 1362              	.LASF28:
- 1363 0095 73706565 		.ascii	"speed2\000"
- 1363      643200
- 1364              	.LASF39:
- 1365 009c 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1365      52784275 
- 1365      66666572 
- 1365      00
- 1366              	.LASF21:
- 1367 00a9 6D6F746F 		.ascii	"motor_forward\000"
- 1367      725F666F 
- 1367      72776172 
- 1367      6400
- 1368              	.LASF29:
- 1369 00b7 6D6F746F 		.ascii	"motor_turnHardRight\000"
- 1369      725F7475 
- 1369      726E4861 
- 1369      72645269 
- 1369      67687400 
- 1370              	.LASF14:
- 1371 00cb 646F7562 		.ascii	"double\000"
- 1371      6C6500
- 1372              	.LASF18:
- 1373 00d2 6D6F746F 		.ascii	"motor_stop\000"
- 1373      725F7374 
- 1373      6F7000
- 1374              	.LASF37:
- 1375 00dd 5A756D6F 		.ascii	"ZumoLibrary\\Motor.c\000"
- 1375      4C696272 
- 1375      6172795C 
- 1375      4D6F746F 
- 1375      722E6300 
- 1376              	.LASF12:
- 1377 00f1 75696E74 		.ascii	"uint32\000"
- 1377      333200
- 1378              	.LASF36:
- 1379 00f8 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 1379      4320342E 
- 1379      392E3320 
- 1379      32303135 
- 1379      30333033 
- 1380 012b 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 1380      20726576 
- 1380      6973696F 
- 1380      6E203232 
- 1380      31323230 
- 1381 015e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1381      66756E63 
- 1381      74696F6E 
- 1381      2D736563 
- 1381      74696F6E 
- 1382              	.LASF8:
- 1383 0186 756E7369 		.ascii	"unsigned int\000"
- 1383      676E6564 
- 1383      20696E74 
- 1383      00
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 28
+ 1361      5F577269 
+ 1361      746500
+ 1362              	.LASF27:
+ 1363 0097 73706565 		.ascii	"speed1\000"
+ 1363      643100
+ 1364              	.LASF28:
+ 1365 009e 73706565 		.ascii	"speed2\000"
+ 1365      643200
+ 1366              	.LASF39:
+ 1367 00a5 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1367      52784275 
+ 1367      66666572 
+ 1367      00
+ 1368              	.LASF21:
+ 1369 00b2 6D6F746F 		.ascii	"motor_forward\000"
+ 1369      725F666F 
+ 1369      72776172 
+ 1369      6400
+ 1370              	.LASF29:
+ 1371 00c0 6D6F746F 		.ascii	"motor_turnHardRight\000"
+ 1371      725F7475 
+ 1371      726E4861 
+ 1371      72645269 
+ 1371      67687400 
+ 1372              	.LASF14:
+ 1373 00d4 646F7562 		.ascii	"double\000"
+ 1373      6C6500
+ 1374              	.LASF18:
+ 1375 00db 6D6F746F 		.ascii	"motor_stop\000"
+ 1375      725F7374 
+ 1375      6F7000
+ 1376              	.LASF37:
+ 1377 00e6 5A756D6F 		.ascii	"ZumoLibrary\\Motor.c\000"
+ 1377      4C696272 
+ 1377      6172795C 
+ 1377      4D6F746F 
+ 1377      722E6300 
+ 1378              	.LASF12:
+ 1379 00fa 75696E74 		.ascii	"uint32\000"
+ 1379      333200
+ 1380              	.LASF36:
+ 1381 0101 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1381      4320342E 
+ 1381      392E3320 
+ 1381      32303135 
+ 1381      30333033 
+ 1382 0134 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1382      20726576 
+ 1382      6973696F 
+ 1382      6E203232 
+ 1382      31323230 
+ 1383 0167 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1383      66756E63 
+ 1383      74696F6E 
+ 1383      2D736563 
+ 1383      74696F6E 
+ 1384              	.LASF8:
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 28
 
 
- 1384              	.LASF23:
- 1385 0193 6C5F7370 		.ascii	"l_speed\000"
- 1385      65656400 
- 1386              	.LASF7:
- 1387 019b 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1387      206C6F6E 
- 1387      6720756E 
- 1387      7369676E 
- 1387      65642069 
- 1388              	.LASF17:
- 1389 01b2 6D6F746F 		.ascii	"motor_start\000"
- 1389      725F7374 
- 1389      61727400 
- 1390              	.LASF34:
- 1391 01be 50574D5F 		.ascii	"PWM_WriteCompare1\000"
- 1391      57726974 
- 1391      65436F6D 
- 1391      70617265 
- 1391      3100
- 1392              	.LASF35:
- 1393 01d0 50574D5F 		.ascii	"PWM_WriteCompare2\000"
+ 1385 018f 756E7369 		.ascii	"unsigned int\000"
+ 1385      676E6564 
+ 1385      20696E74 
+ 1385      00
+ 1386              	.LASF23:
+ 1387 019c 6C5F7370 		.ascii	"l_speed\000"
+ 1387      65656400 
+ 1388              	.LASF7:
+ 1389 01a4 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1389      206C6F6E 
+ 1389      6720756E 
+ 1389      7369676E 
+ 1389      65642069 
+ 1390              	.LASF17:
+ 1391 01bb 6D6F746F 		.ascii	"motor_start\000"
+ 1391      725F7374 
+ 1391      61727400 
+ 1392              	.LASF34:
+ 1393 01c7 50574D5F 		.ascii	"PWM_WriteCompare1\000"
  1393      57726974 
  1393      65436F6D 
  1393      70617265 
- 1393      3200
- 1394              	.LASF38:
- 1395 01e2 433A5C55 		.ascii	"C:\\Users\\Jukka\\Documents\\PSoC Creator\\Workspac"
- 1395      73657273 
- 1395      5C4A756B 
- 1395      6B615C44 
- 1395      6F63756D 
- 1396 0210 6530315C 		.ascii	"e01\\Zumo.release04\\Zumo01\\Zumo-ryhm-2\\ZumoBot.c"
- 1396      5A756D6F 
- 1396      2E72656C 
- 1396      65617365 
- 1396      30345C5A 
- 1397 023f 7964736E 		.ascii	"ydsn\000"
- 1397      00
- 1398              	.LASF19:
- 1399 0244 73706565 		.ascii	"speed\000"
- 1399      6400
- 1400              	.LASF16:
- 1401 024a 73697A65 		.ascii	"sizetype\000"
- 1401      74797065 
- 1401      00
- 1402              	.LASF6:
- 1403 0253 6C6F6E67 		.ascii	"long long int\000"
- 1403      206C6F6E 
- 1403      6720696E 
- 1403      7400
- 1404              	.LASF15:
- 1405 0261 63686172 		.ascii	"char\000"
- 1405      00
- 1406              	.LASF26:
- 1407 0266 6D6F746F 		.ascii	"motor_turnHardLeft\000"
- 1407      725F7475 
- 1407      726E4861 
-ARM GAS  C:\Users\Jukka\AppData\Local\Temp\ccbdXjrX.s 			page 29
+ 1393      3100
+ 1394              	.LASF35:
+ 1395 01d9 50574D5F 		.ascii	"PWM_WriteCompare2\000"
+ 1395      57726974 
+ 1395      65436F6D 
+ 1395      70617265 
+ 1395      3200
+ 1396              	.LASF19:
+ 1397 01eb 73706565 		.ascii	"speed\000"
+ 1397      6400
+ 1398              	.LASF16:
+ 1399 01f1 73697A65 		.ascii	"sizetype\000"
+ 1399      74797065 
+ 1399      00
+ 1400              	.LASF6:
+ 1401 01fa 6C6F6E67 		.ascii	"long long int\000"
+ 1401      206C6F6E 
+ 1401      6720696E 
+ 1401      7400
+ 1402              	.LASF15:
+ 1403 0208 63686172 		.ascii	"char\000"
+ 1403      00
+ 1404              	.LASF26:
+ 1405 020d 6D6F746F 		.ascii	"motor_turnHardLeft\000"
+ 1405      725F7475 
+ 1405      726E4861 
+ 1405      72644C65 
+ 1405      667400
+ 1406              	.LASF2:
+ 1407 0220 73686F72 		.ascii	"short int\000"
+ 1407      7420696E 
+ 1407      7400
+ 1408              	.LASF30:
+ 1409 022a 50574D5F 		.ascii	"PWM_Start\000"
+ 1409      53746172 
+ARM GAS  C:\Users\Nico\AppData\Local\Temp\ccSo5hGD.s 			page 29
 
 
- 1407      72644C65 
- 1407      667400
- 1408              	.LASF2:
- 1409 0279 73686F72 		.ascii	"short int\000"
- 1409      7420696E 
  1409      7400
- 1410              	.LASF30:
- 1411 0283 50574D5F 		.ascii	"PWM_Start\000"
- 1411      53746172 
- 1411      7400
- 1412              	.LASF31:
- 1413 028d 50574D5F 		.ascii	"PWM_Stop\000"
- 1413      53746F70 
- 1413      00
- 1414              	.LASF4:
- 1415 0296 6C6F6E67 		.ascii	"long int\000"
- 1415      20696E74 
- 1415      00
- 1416              	.LASF22:
- 1417 029f 6D6F746F 		.ascii	"motor_turn\000"
- 1417      725F7475 
- 1417      726E00
- 1418              	.LASF3:
- 1419 02aa 73686F72 		.ascii	"short unsigned int\000"
- 1419      7420756E 
- 1419      7369676E 
- 1419      65642069 
- 1419      6E7400
- 1420              	.LASF40:
- 1421 02bd 43794465 		.ascii	"CyDelay\000"
- 1421      6C617900 
- 1422              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 1410              	.LASF38:
+ 1411 0234 433A5C55 		.ascii	"C:\\Users\\Nico\\Documents\\PSoC Creator\\Zumo-ryhm"
+ 1411      73657273 
+ 1411      5C4E6963 
+ 1411      6F5C446F 
+ 1411      63756D65 
+ 1412 0262 2D325C5A 		.ascii	"-2\\ZumoBot.cydsn\000"
+ 1412      756D6F42 
+ 1412      6F742E63 
+ 1412      7964736E 
+ 1412      00
+ 1413              	.LASF4:
+ 1414 0273 6C6F6E67 		.ascii	"long int\000"
+ 1414      20696E74 
+ 1414      00
+ 1415              	.LASF22:
+ 1416 027c 6D6F746F 		.ascii	"motor_turn\000"
+ 1416      725F7475 
+ 1416      726E00
+ 1417              	.LASF3:
+ 1418 0287 73686F72 		.ascii	"short unsigned int\000"
+ 1418      7420756E 
+ 1418      7369676E 
+ 1418      65642069 
+ 1418      6E7400
+ 1419              	.LASF40:
+ 1420 029a 43794465 		.ascii	"CyDelay\000"
+ 1420      6C617900 
+ 1421              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
