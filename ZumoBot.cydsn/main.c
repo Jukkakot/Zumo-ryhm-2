@@ -50,10 +50,12 @@ void blinking_led ();
 void check_battery ();
 void move();
 int threshold_calculator (int black, int white);
-    int left1 = 1;
-    int left3 = 1;
-    int right1 = 1;
-    int right3 = 1;
+
+ unsigned int IR_val; 
+    int left1 = 0;
+    int left3 = 0;
+    int right1 = 0;
+    int right3 = 0;
 
     int far_left_white;
     int left_white;
@@ -114,7 +116,7 @@ int main()
     sensor_isr_StartEx(sensor_isr_handler);
     
     reflectance_start();
-    reflectance_set_threshold(14700, 14750, 14600, 15950);
+    
 
     IR_led_Write(1);
     
@@ -140,7 +142,9 @@ int main()
        CyDelay(50);
        BatteryLed_Write(0); // Switch led off
     
-    while (SW1_Read() == 1); //Move to blackline
+    while (IR_val == 0){//Move to blackline
+        IR_val = get_IR();
+    } 
     BatteryLed_Write(1);    // Switch led on 
     motor_start();
     
@@ -154,15 +158,20 @@ int main()
     motor_stop();
     BatteryLed_Write(0);    // Switch led off
     CyDelay(500);
+    IR_val = 0;
     
-    while (SW1_Read() == 1); //Start the race
-    left1 = 0, right1 = 0;
+    while (IR_val == 0){//Start the race
+        IR_val = get_IR();
+    } 
+    left1 = 0, right1 = 0, right3 = 0, left3 = 0;
     BatteryLed_Write(1);    // Switch led on 
     motor_start();
-    while(blacklines<=3){
+    
+    while(blacklines<=2){     
         move_smooth();
-        //printf("%d", blacklines);
     } 
+    
+    motor_forward(0,0);
     motor_stop();
     return 0;
 }
@@ -172,8 +181,8 @@ void move_smooth(){
     struct sensors_ dig;
     reflectance_read(&ref);
     reflectance_digital(&dig);
-    
-    if (left3 == 1 && right3 == 1 && (dig.l1 ==  0 && dig.r1 == 0 && dig.r3 == 0 && dig.l3 == 0) ){
+    reflectance_set_threshold(14700, 14750, 14600, 15950);
+    if ((left3 == 1 || right3 == 1) && (dig.l1 ==  0 && dig.r1 == 0 && dig.r3 == 0 && dig.l3 == 0) ){
             blacklines +=1;
     }
     /*if (ref.r3 > 10000 && ref.l3 > 10000 && previous_left3 < 10000 && previous_right3 < 10000 && ref.r1>10000 && ref.l1>10000) {
